@@ -1,0 +1,5 @@
+Legajo: 1-Nombre y Apellido: jose Cardozo Sueldo: 12313.0
+Legajo: 2-Nombre y Apellido: Nicolas Pedraza Sueldo: 112.0
+Legajo: 1-Nombre y Apellido: Nicanor Pizzano Sueldo: 212.0-Sun May  7 22:46:02 2023
+Legajo: 1-Nombre y Apellido: Jorge asdasd Sueldo: 12.0-Wed May 17 20:38:58 2023
+Legajo: 2-Nombre y Apellido: Maria Luna Sueldo: 24234.0-Wed May 17 20:39:07 2023

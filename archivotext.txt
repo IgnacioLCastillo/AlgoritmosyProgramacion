@@ -1,0 +1,1 @@
+Creando archivo de texto en python de forma clásica
