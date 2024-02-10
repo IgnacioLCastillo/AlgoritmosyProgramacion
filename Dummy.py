@@ -1,5 +1,6 @@
-# -*- coding: utf-8 -*-
-# Representando un carácter especial en una cadena de bytes
-cadena_bytes = b'Campe\xc3\xb3n del mundo'  # \xe1 representa el carácter 'ó' en UTF-8
-print(cadena_bytes)  # b'Hola \xe1 mundo'
-print(cadena_bytes.decode("utf-8"))
+#armar un diccionario con los dias de la semana
+dias = {1:"Lunes",2:"Martes",3:"Miercoles",4:"Jueves",5:"Viernes",6:"Sabado",7:"Domingo"}
+#Mostar Diccionaro con un for
+for i in dias:
+    print(i, dias[i])
+    print(dias[1])

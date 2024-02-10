@@ -130,6 +130,11 @@ def udfBusquedaBinaria(lista, x):
     return -1
 
 
+def udf_modificar_estudiante(listaestudiantes, indice, nuevo_nombre):
+    unestudiante = listaestudiantes[indice]
+    unestudiante.nombre = nuevo_nombre
+
+
 
 def udfBubbleSort(arr):
     n = len(arr)
@@ -240,6 +245,29 @@ while viOpcion != 10:
             print("Eliminado con Exito")
             viCantCargados-=1
             udfMostrarTodos(lisEmpleados)
+
+    elif viOpcion == 9:
+        print("--------------Modificar Empleado--------------")
+        while True:
+            try:
+                idBuscado = int(input("Ingrese el ID a Modificar:"))
+                if idBuscado < 0:
+                    print("Id Empleado > a cero")
+                    continue
+            except ValueError:
+                print("Error, Solo acepta valores Numericos")
+                continue
+            else:
+                break
+        encontrado = udfBusquedaSecuencial(lisEmpleados, idBuscado)
+        if encontrado == -1:
+            print(f"Empleado ID{idBuscado} no encontrado en la lista")
+        else:
+            udf_modificar_estudiante(lisEmpleados,encontrado,"Juan")
+            print("Modificado con Exito")
+            udfMostrarTodos(lisEmpleados)
+
+
 
     else:
         print('Error')
