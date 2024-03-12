@@ -12,7 +12,7 @@ for nombre in nombres:
 ## Muy importante cerrar el archivo.
 archivo.close()
 
-contenido = open("../Algoritmos y Programacion/nombres.txt", "r")
+contenido = open("nombres.txt", "r")
 
 ## Recorremos y mostramos cada línea enumerada
 contador = 1

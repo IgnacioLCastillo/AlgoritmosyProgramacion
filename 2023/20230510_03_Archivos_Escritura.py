@@ -54,10 +54,10 @@ print('-------------Hago Append en el otro archivo con lo que tienen MiTexto----
 with open('nombres.txt', 'a') as archivo:
     archivo.write(contenido)
 '''
-#ruta = r"C:\Users\castili4\PycharmProjects\pythonProject\Algoritmos y Programacion\Rawarchivo.txt"
-#ruta = "C:/Users/castili4/PycharmProjects/pythonProject/Algoritmos y Programacion/Rawarchivo.txt"
-#ruta = "C:\\Users\\castili4\\PycharmProjects\\pythonProject\\Algoritmos y Programacion\\Rawarchivo.txt"
-ruta = r"C:\Users\castili4\PycharmProjects\pythonProject\Algoritmos y Programacion\Rawarchivo.txt"
+#ruta = r"C:\Users\castili4\PycharmProjects\pythonProject\Algoritmos_y_Programacion\Rawarchivo.txt"
+#ruta = "C:/Users/castili4/PycharmProjects/pythonProject/Algoritmos_y_Programacion/Rawarchivo.txt"
+#ruta = "C:\\Users\\castili4\\PycharmProjects\\pythonProject\\Algoritmos_y_Programacion\\Rawarchivo.txt"
+ruta = r"C:\Users\castili4\PycharmProjects\pythonProject\Algoritmos_y_Programacion\Rawarchivo.txt"
 with open(ruta, "w") as archivo:
     archivo.write("Viene desde el Raw!\n")
 

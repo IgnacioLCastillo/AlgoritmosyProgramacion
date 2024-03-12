@@ -13,7 +13,7 @@ def udfOrdenamientoBurbuja(listaPalabras):
 
 
 def main():
-    archivo = open("archivo.txt","r")
+    archivo = open("archivo.txt", "r")
     i = 1
     listaPalabras = []
     for linea in archivo:
