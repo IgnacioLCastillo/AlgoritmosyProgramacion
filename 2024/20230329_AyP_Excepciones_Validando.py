@@ -6,10 +6,12 @@ def udfCarga_Matriz (pMatriz,pFil,pCol):
             while True:
                 try:
                     viValor=int(input("Ingrese Valor"))
-                except ValueError:  # Variable desconocida
-                    print("Error, Ingrese un numero")
+                #except ValueError:  # Variable desconocida
+                #    print("Error, Ingrese un numero")
+                #    continue
+                except Exception as e:
+                    print("Error:",e)
                     continue
-
                 if viValor < 0:
                     ##print("Debes escribir un numero positivo.")
                     raise Exception("Sorry, no numbers below zero")
@@ -28,6 +30,10 @@ matrix = np.zeros(shape=(FILAS,COLUMNAS),dtype=int)
 udfCarga_Matriz(matrix,FILAS,COLUMNAS)
 
 print(matrix)
+
+
+
+
 
 
 
