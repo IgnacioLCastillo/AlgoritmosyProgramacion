@@ -12,7 +12,7 @@ import numpy as np
 #miMatrix = np.matrix([[1,2,3],[4,5,6],[7,8,9]])
 #miMatrix = np.array([range(3),range(3)])
 #miMatrix = np.matriz([range(3),range(3)])
-
+print(miMatrix)
 
 
 #Formas Inicializar 1

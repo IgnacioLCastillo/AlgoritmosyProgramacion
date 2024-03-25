@@ -1,4 +1,4 @@
-#Definicion y dimensionamiento
+ #Definicion y dimensionamiento
 import array as arr
 
 def udfCargaVector(mipArreglo, vipCantElem):
