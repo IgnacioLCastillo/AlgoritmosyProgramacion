@@ -1,4 +1,4 @@
-#Mostrar como Iterar con for
+#Emeplo 1 - Mostrar como Iterar con for
 '''
 for i in range(0,5,1):
     viEdad=int(input("Ingrese la Edad"))
@@ -11,7 +11,7 @@ for i in range(0,5,1):
 '''
 
 '''
-#Emular Clave con while
+# Ejemplo 2 - Emular Clave con while
 viNroError=0
 vcClave='Unpaz1234'
 while viNroError < 3:
@@ -26,7 +26,7 @@ while viNroError < 3:
 '''
 
 '''
-#Emular Clave con do while / repeat until
+#Ejemplo 3 - Emular Clave con do while / repeat until
 viNroError=0
 vcClave='Unpaz1234'
 while True:
@@ -42,7 +42,7 @@ while True:
             break
 '''
 
-#Mostrar seleccion multiple
+#Ejemplo 4 - Mostrar seleccion multiple
 opcion=0
 while opcion != 4:
     print("1- Ingresar")

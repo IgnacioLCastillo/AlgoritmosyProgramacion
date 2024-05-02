@@ -5,3 +5,7 @@ Legajo: 1-Nombre y Apellido: Jorge asdasd Sueldo: 12.0-Wed May 17 20:38:58 2023
 Legajo: 2-Nombre y Apellido: Maria Luna Sueldo: 24234.0-Wed May 17 20:39:07 2023
 Legajo: 1-Nombre y Apellido: jose asas Sueldo: 3.0-Tue Jun  6 22:47:05 2023
 Legajo: 2-Nombre y Apellido: nicolas asdada Sueldo: 1.0-Tue Jun  6 22:47:17 2023
+Legajo: 1-Nombre y Apellido: Ignacio Castro Sueldo: 2223.0-Mon Apr 15 20:15:19 2024
+Legajo: 2-Nombre y Apellido: S Luis asd Sueldo: 222.0-Mon Apr 15 20:16:05 2024
+Legajo: 3-Nombre y Apellido: Nico Sanchez Sueldo: 444.0-Mon Apr 15 20:16:20 2024
+Legajo: 1-Nombre y Apellido: JOse asda Sueldo: 23.0-Mon Apr 15 20:19:14 2024

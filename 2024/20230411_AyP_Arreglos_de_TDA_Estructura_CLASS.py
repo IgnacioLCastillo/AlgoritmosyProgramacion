@@ -1,0 +1,63 @@
+# TDA EMPLEADO
+class tdaEMPLEADO:
+    def __init__(self, pNombre, pApellido, pDNI, pEdad):
+        self.nombre = pNombre
+        self.apellido = pApellido
+        self.dni = pDNI
+        if pEdad>0:
+            self.edad = pEdad
+        else:
+            raise Exception ("la edad no puede ser negativa")
+    ##Retorno concatenado
+    def __str__(self):
+        return self.nombre + ' ' + self.apellido
+
+    ##Retorno En Funciones
+    def ObtenerNombre(self):
+        return self.nombre
+    def ObtenerApellido(self):
+        return self.apellido
+
+
+
+##Programa Principal
+Empleados=[0]*5 ##Una de las tantas formas que tiene la lista de inicializar valores predefinidos
+viCantElem=len(Empleados)
+print(Empleados)
+for i in range(0,viCantElem,1):
+    vsNombre=input("Ingrese Nombre:")
+    vsApellido =input("Ingrese Apellido:")
+    vsDNI =input("Ingrese DNI:")
+    viEdad = int(input("Ingrese Edad:"))
+    Empleados[i]=tdaEMPLEADO(vsNombre, vsApellido,vsDNI, viEdad)
+    #Empleados[i].add(tdaEMPLEADO(vsNombre, vsApellido,vsDNI, viEdad))
+
+
+##Programa Principal
+for i in range(0,viCantElem,1):
+    print(Empleados[i])
+    print(Empleados[i].ObtenerNombre())
+
+
+for i in Empleados:
+    print(i)
+    print(i.ObtenerNombre())
+
+
+"""
+##Programa Principal
+miEmpleado1 = tdaEMPLEADO("Jose", "Castro", "243434", 15)
+miEmpleado2 = tdaEMPLEADO("Lucia","Martinez","111434", 22)
+print(miEmpleado1)
+print(miEmpleado2)
+
+##Impresion de atriburos del registro Forma A
+print("Empleado 1 Nombre:", tdaEMPLEADO.ObtenerNombre(miEmpleado1))
+print("Empleado 1 Apellido:",tdaEMPLEADO.ObtenerApellido(miEmpleado1))
+print("Empleado 2 Nombre:",tdaEMPLEADO.ObtenerNombre(miEmpleado2))
+print("Empleado 2 Apellido:",tdaEMPLEADO.ObtenerApellido(miEmpleado2))
+
+##Impresion de atriburos del registro Forma B
+print(miEmpleado1.ObtenerNombre())
+print(miEmpleado1.ObtenerApellido())
+"""

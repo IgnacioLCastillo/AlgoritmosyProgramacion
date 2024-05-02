@@ -1,4 +1,5 @@
 import time
+import pandas as pd
 # TDA EMPLEADO
 class tdaEMPLEADO:
     def __init__(self,pLegajo, pNombre, pApellido,pSueldo,pEdad=0):
@@ -12,27 +13,31 @@ class tdaEMPLEADO:
     def __str__(self):
         return 'Legajo: '+str(self.idLegajo)+'-Nombre y Apellido: '+self.nombre + ' ' + self.apellido+' Sueldo: '+str(self.sueldo)
 
-    def ObteneridLegajo(self):
+    def setNombre(self,pNombre):
+        self.nombre=pNombre
+        return self.nombre
+
+    def getidLegajo(self):
         return self.idLegajo
     ##Retorno En Funciones
-    def ObtenerNombre(self):
+    def getNombre(self):
         return self.nombre
-    def ObtenerApellido(self):
+    def getApellido(self):
         return self.apellido
 
-    def ObtenerSueldoBruto(self):
+    def getSueldoBruto(self):
         return self.sueldo
 
-    def ObtenerSueldoNeto(self):
+    def getSueldoNeto(self):
         return self.sueldo*.87
 
 
 def udfMaxId(plisEmpleados, piCantElem):
     if len(plisEmpleados)>0:
-        viMax = plisEmpleados[0].ObteneridLegajo()
+        viMax = plisEmpleados[0].getidLegajo()
         for i in range(1, piCantElem, 1):  # Iteramos sobre cada elemento modalidad Arreglo.
-            if plisEmpleados[i].ObteneridLegajo() > viMax:
-                viMax = plisEmpleados[i].ObteneridLegajo()
+            if plisEmpleados[i].getidLegajo() > viMax:
+                viMax = plisEmpleados[i].getidLegajo()
         return viMax+1
     else:
         return 1
@@ -71,13 +76,13 @@ def udfCargaEmpleados (plisEmpleados,piTopeCantElem,plOrdenStatus,piCantEmp=0):
         #plisEmpleados[piCantEmp]=tdaEMPLEADO(vinIdLegajo,vsNombre, vsApellido,vfSueldo)
         plisEmpleados.append(tdaEMPLEADO(vinIdLegajo,vsNombre, vsApellido,vfSueldo))
         #print (plOrdenStatus, plisEmpleados[piCantEmp],vfSueldo)
-        if vfSueldo < plisEmpleados[piCantEmp-1].ObtenerSueldoBruto() and plOrdenStatus == True:
+        if vfSueldo < plisEmpleados[piCantEmp-1].getSueldoBruto() and plOrdenStatus == True:
             plOrdenStatus = False
         print (f' --------Empleado {plisEmpleados[piCantEmp]} --- Cargado con Exito ')
         with open("Empleados.txt", "a") as fileEmpleados:
             fileEmpleados.write(str(plisEmpleados[piCantEmp])+'-'+time.strftime("%c")+'\n')
         piCantEmp += 1
-        vcContinua=input("Continua el Inrgeso (S/N): ")
+        vcContinua=input("Continua el Ingreso (S/N): ")
         if vcContinua.upper()=='N':
             vlFinaliza=True
 
@@ -88,26 +93,25 @@ def udfCargaEmpleados (plisEmpleados,piTopeCantElem,plOrdenStatus,piCantEmp=0):
 
 
 def udfObtenerEmpMaximo(plisEmpleados,piCantElem):
-    viMax = plisEmpleados[0].ObtenerSueldoBruto()
+    viMax = plisEmpleados[0].getSueldoBruto()
     posEmp=0
     print(piCantElem)
     for i in range(1, piCantElem, 1):  # Iteramos sobre cada elemento modalidad Arreglo.
-        if plisEmpleados[i].ObtenerSueldoBruto() > viMax:
-            viMax = plisEmpleados[i].ObtenerSueldoBruto()
+        if plisEmpleados[i].getSueldoBruto() > viMax:
+            viMax = plisEmpleados[i].getSueldoBruto()
             posEmp=i
 
     return posEmp
 
 
 def udfMostrarTodos(plisEmpleados):
-    for cadaEmpleado in plisEmpleados:
-        print(cadaEmpleado)
-
+    df = pd.DataFrame([vars(empleado) for empleado in plisEmpleados])
+    print(df)
 
 def udfBusquedaSecuencial(unaLista, item):
     pos = 0
     while pos < len(unaLista):
-        if unaLista[pos].ObteneridLegajo() == item:
+        if unaLista[pos].getidLegajo() == item:
             return pos
         else:
             pos = pos+1
@@ -120,10 +124,11 @@ def udfBusquedaBinaria(lista, x):
     der = len(lista) -1 # der guarda el indice fin del segmento
     while izq <= der:
         medio =int((izq+der)/2)
-        print ("DEBUG:", "izq:", izq, "der:", der, "medio:", medio)
-        if lista[medio].ObteneridLegajo() == x:
+        # Esta linea se habilita solo si quieren ver como se va moviendo el segmento izq, der y como maraca el medio
+        #print ("DEBUG:", "izq:", izq, "der:", der, "medio:", medio) 
+        if lista[medio].getidLegajo() == x:
             return medio
-        elif lista[medio].ObteneridLegajo() > x:
+        elif lista[medio].getidLegajo() > x:
             der = medio-1
         else:
             izq = medio+1
@@ -132,8 +137,22 @@ def udfBusquedaBinaria(lista, x):
 
 def udf_modificar_estudiante(listaestudiantes, indice, nuevo_nombre):
     unestudiante = listaestudiantes[indice]
-    unestudiante.nombre = nuevo_nombre
+    unestudiante.setNombre(nuevo_nombre)
 
+
+
+def udfBubbleSortId(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        hayCambios = False
+        for j in range(0, n - i - 1):
+            if arr[j].getidLegajo() > arr[j + 1].getidLegajo():
+                hayCambios = True
+                aux = arr[j]
+                arr[j] = arr[j + 1]
+                arr[j + 1] = aux
+        if not hayCambios:
+            return
 
 
 def udfBubbleSort(arr):
@@ -141,7 +160,7 @@ def udfBubbleSort(arr):
     for i in range(n - 1):
         hayCambios = False
         for j in range(0, n - i - 1):
-            if arr[j].ObtenerSueldoNeto() > arr[j + 1].ObtenerSueldoNeto():
+            if arr[j].getSueldoNeto() > arr[j + 1].getSueldoNeto():
                 hayCambios = True
                 aux = arr[j]
                 arr[j] = arr[j + 1]
@@ -183,41 +202,39 @@ while viOpcion != 10:
     elif viOpcion == 2:
         for cadaEmpleado in lisEmpleados: #Iteramos directamente sobre la coleccion
             print("--------------Seccion Sueldos Brutos--------------")
-            print(f'Apellido:{cadaEmpleado.ObtenerApellido()} Sueldo Bruto:{cadaEmpleado.ObtenerSueldoBruto()}')
+            print(f'Apellido:{cadaEmpleado.getApellido()} Sueldo Bruto:{cadaEmpleado.getSueldoBruto()}')
     elif viOpcion == 3:
         viSuma = 0
         for cadaEmpleado in lisEmpleados:
             print("--------------Promedio Empleados--------------")
-            viSuma += cadaEmpleado.ObtenerSueldoBruto()
+            viSuma += cadaEmpleado.getSueldoBruto()
 
         print(f"El Promedio de todos los Empleados es:{float(viSuma/(viCantCargados))}")
     elif viOpcion == 4:
-        viMaxEmp=udfObtenerEmpMaximo(lisEmpleados, (viCantCargados))
-        print(f'Apellido:{lisEmpleados[viMaxEmp].ObtenerApellido()} Sueldo Bruto:{lisEmpleados[viMaxEmp].ObtenerSueldoBruto()}')
+        viMaxEmp=udfgetEmpMaximo(lisEmpleados, (viCantCargados))
+        print(f'Apellido:{lisEmpleados[viMaxEmp].getApellido()} Sueldo Bruto:{lisEmpleados[viMaxEmp].getSueldoBruto()}')
     elif viOpcion == 5:
         print("--------------Mostrar Todos --------------")
         udfMostrarTodos(lisEmpleados)
     elif viOpcion == 6:
-        if not vlEstaOrdenado:
-            print("La lista no esta ordenada")
-        else:
-            print("--------------Buscar Binaria Empleados--------------")
-            while True:
-                try:
-                    idBuscado = int(input("Ingrese el ID a buscar:"))
-                    if idBuscado < 0:
-                        print("Id Empleado > a cero")
-                        continue
-                except ValueError:
-                    print("Error, Solo acepta valores Numericos")
+        udfBubbleSortId(lisEmpleados)
+        print("--------------Buscar Binaria Empleados--------------")
+        while True:
+            try:
+                idBuscado = int(input("Ingrese el ID a buscar:"))
+                if idBuscado < 0:
+                    print("Id Empleado > a cero")
                     continue
-                else:
-                    break
-            encontrado=udfBusquedaBinaria(lisEmpleados,idBuscado)
-            if encontrado == -1:
-                print(f"Empleado ID{idBuscado} no encontrado en la lista")
+            except ValueError:
+                print("Error, Solo acepta valores Numericos")
+                continue
             else:
-                print(lisEmpleados[encontrado])
+                break
+        encontrado=udfBusquedaBinaria(lisEmpleados,idBuscado)
+        if encontrado == -1:
+            print(f"Empleado ID{idBuscado} no encontrado en la lista")
+        else:
+            print(lisEmpleados[encontrado])
     elif viOpcion == 7:
         print("--------------Ordenar Empleados--------------")
 
@@ -263,7 +280,8 @@ while viOpcion != 10:
         if encontrado == -1:
             print(f"Empleado ID{idBuscado} no encontrado en la lista")
         else:
-            udf_modificar_estudiante(lisEmpleados,encontrado,"Juan")
+            nuevoNombre = input("Ingrese el nuevo Nombre:")
+            udf_modificar_estudiante(lisEmpleados,encontrado,nuevoNombre)
             print("Modificado con Exito")
             udfMostrarTodos(lisEmpleados)
 

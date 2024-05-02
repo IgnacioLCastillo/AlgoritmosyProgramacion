@@ -18,14 +18,13 @@ def udfBubbleSort(arr):
     # optimizar el código, por lo que si la matriz ya está ordenada, no es necesario
     # para pasar por todo el proceso
     #hayCambios = False #Interruptor
-
     # Recorrer todos los elementos del arreglo o lista
-    for i in range(n - 1):
+    for pasada in range(n - 1):
         # range(n) también funciona, pero el bucle externo lo hará
         # repetir una vez más de lo necesario.
         # Los últimos elementos i ya están en su lugar
         hayCambios = False
-        for j in range(0, n - i - 1):
+        for j in range(0, n - pasada - 1):
             # recorrer el arreglo de 0 a n-i-1
             # Cambiar si el elemento encontrado es mayor
             # que el siguiente elemento
