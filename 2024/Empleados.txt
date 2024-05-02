@@ -1,0 +1,17 @@
+Legajo: 1-Nombre y Apellido: A A Sueldo: 500.0-Thu Apr 25 21:02:09 2024
+Legajo: 2-Nombre y Apellido: b b Sueldo: 600.0-Thu Apr 25 21:03:32 2024
+Legajo: 3-Nombre y Apellido: c c Sueldo: 700.0-Thu Apr 25 21:03:52 2024
+Legajo: 1-Nombre y Apellido: a a Sueldo: 500.0-Thu Apr 25 21:15:53 2024
+Legajo: 2-Nombre y Apellido: b b Sueldo: 7700.0-Thu Apr 25 21:16:02 2024
+Legajo: 3-Nombre y Apellido: c c Sueldo: 300.0-Thu Apr 25 21:16:16 2024
+Legajo: 1-Nombre y Apellido: a a Sueldo: 500.0-Thu Apr 25 21:17:36 2024
+Legajo: 2-Nombre y Apellido: b b Sueldo: 800.0-Thu Apr 25 21:17:40 2024
+Legajo: 3-Nombre y Apellido: c c Sueldo: 300.0-Thu Apr 25 21:17:45 2024
+Legajo: 1-Nombre y Apellido: A A Sueldo: 222.0-Fri Apr 26 08:51:13 2024
+Legajo: 2-Nombre y Apellido: B B Sueldo: 6.0-Fri Apr 26 08:51:20 2024
+Legajo: 1-Nombre y Apellido: A A Sueldo: 4.0-Thu May  2 08:11:50 2024
+Legajo: 2-Nombre y Apellido: B B Sueldo: 55.0-Thu May  2 08:11:57 2024
+Legajo: 3-Nombre y Apellido: 8 8 Sueldo: 88.0-Thu May  2 08:12:03 2024
+Legajo: 1-Nombre y Apellido: A A Sueldo: 55.0-Thu May  2 08:12:48 2024
+Legajo: 2-Nombre y Apellido: B B Sueldo: 66.0-Thu May  2 08:12:57 2024
+Legajo: 3-Nombre y Apellido: C C Sueldo: 777.0-Thu May  2 08:13:06 2024
