@@ -5,6 +5,7 @@ with open("Mitexto.txt", "w") as archivo:
     archivo.write("Que locura!\n")
     archivo.write("Campeones")
 
+
 #flush(): Este método se utiliza para asegurarse de que todos los datos escritos en el archivo se hayan guardado
 # físicamente en el disco. En general, Python realiza un almacenamiento en búfer de los datos escritos en el archivo
 # para mejorar la eficiencia. Sin embargo, puede haber casos en los que desees forzar la escritura inmediata de los
@@ -36,14 +37,16 @@ with open("Mitexto.txt", "w") as archivo:
     archivo.writelines(todaslineas)
 
 
-
+'''
 print('-------------Lectura y Escritura. Si Uso W+ crea el archivo------------------')
-with open("Mitexto.txt", "r+") as archivo:
+with open("Mitextoxx.txt", "r+") as archivo:
     archivo.write("Hola, mundo!\n")
     archivo.writelines(["Agrego esto\n", "y esto\n"])
     archivo.seek(0)
     todaslineas = archivo.read()
     print(todaslineas)
+'''
+
 '''
 print('-------------Con Read Mostrado todo el contenido. Luegi el Tell------------------')
 with open('Mitexto.txt', 'r') as archivo:
@@ -55,9 +58,9 @@ with open('nombres.txt', 'a') as archivo:
     archivo.write(contenido)
 '''
 #ruta = r"C:\Users\castili4\PycharmProjects\pythonProject\Algoritmos_y_Programacion\Rawarchivo.txt"
-#ruta = "C:/Users/castili4/PycharmProjects/pythonProject/Algoritmos_y_Programacion/Rawarchivo.txt"
+ruta = "C:/Users/castili4/PycharmProjects/pythonProject/Algoritmos_y_Programacion/Rawarchivo.txt"
 #ruta = "C:\\Users\\castili4\\PycharmProjects\\pythonProject\\Algoritmos_y_Programacion\\Rawarchivo.txt"
-ruta = r"C:\Users\castili4\PycharmProjects\pythonProject\Algoritmos_y_Programacion\Rawarchivo.txt"
+#ruta =  r"C:\Users\castili4\PycharmProjects\pythonProject\Algoritmos_y_Programacion\Rawarchivo.txt"
 with open(ruta, "w") as archivo:
     archivo.write("Viene desde el Raw!\n")
 

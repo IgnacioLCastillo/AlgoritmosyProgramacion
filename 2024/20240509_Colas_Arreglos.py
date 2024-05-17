@@ -11,7 +11,6 @@ def desencolar(vec, ptop):
     numeroSaliente = vec[0]
     for x in range(ptop):
         vec[x] = vec[x + 1]
-    vec[x + 1] = 0 #Agregado para limpiar el ultimo elemento.
     ptop-= 1
     print ("Desencola el: ",numeroSaliente)
     return (ptop)

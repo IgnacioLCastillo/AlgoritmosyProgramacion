@@ -1,7 +1,7 @@
 def udfMenu():
     print("1-Lectura Total")
     print("2-Conteo Lineas")
-    print("3-Modificacion")
+    print("3-Conteo de Palabras")
     print("4-Consulta")
     print("5-Busqueda")
     print("6-Salir")
@@ -30,23 +30,48 @@ def udfConteoLineas():
     return cantLinea
 
 
-def udfConteoPalabras():
+def udfConteoPalabras_Forma_01():
     listaPalabras = []
     ##----Conteo de Palabras
     print ("*** 2 ***")
-
     #Con este enfoque, el archivo con el que esta trabajando se cierra automaticamente para que no tenga que acordarse de usar file.close().
     with open("archivo.txt", "r") as miArchivo:
+        sum=0
         for lineas in miArchivo:
-            listaPalabras.extend(lineas.split())
+            print("Lineas: ",lineas)
+            cant=len(lineas.split())
+            #listaPalabras.extend(lineas.split())
+            sum=sum+cant
             print ("Contenido Lista:" , listaPalabras)
 
-    cantPal = 0
-    for unaPalabra in listaPalabras:
-        print(unaPalabra)
-        cantPal+=1
 
-    return cantPal
+def udfConteoPalabras_Forma_02():
+        listaPalabras = []
+        ##----Conteo de Palabras
+        print("*** 3 ***")
+        # Con este enfoque, el archivo con el que esta trabajando se cierra automaticamente para que no tenga que acordarse de usar file.close().
+        with open("archivo.txt", "r") as miArchivo:
+            for lineas in miArchivo:
+                print("Lineas: ", lineas)
+                listaPalabras.extend(lineas.split()) # Dividimos la linea en palabras y las agregamos a la lista
+                #El Extend método agrega todos los elementos de un iterable (lista, tupla, cadena, etc.) al final de la lista.
+                #Entonces me termian quedando una sola lista con los elementos de los x renglones. Por esi si saco
+                # el len de la lista saco la cantidad de palabras de las dos o mas filas que con el extend
+                # se unieron en una sola lista.
+                print("Contenido Lista:", listaPalabras) # Solo para que vean como queda la lista extendida
+    return len(listaPalabras)
+
+def udfConteoPalabras_Forma_03():
+    cantidadPalabras = 0
+    with open('archivo.txt', 'r') as archivo:
+        todaslineas = archivo.readlines()  # Separamos el contenido del archivo en lineas
+        print(todaslineas)
+        for cadaLinea in todaslineas:  # Iteramos a traves de las lineas
+            palabras = cadaLinea.split()  # Dividimos la linea en palabras
+            print(palabras, len(palabras))
+            cantidadPalabras += len(palabras) # Sumamos la cantidad de palabras en la linea
+
+    return cantidadPalabras
 
 
 def udfBusquedaLetra(pLetra):
@@ -80,7 +105,8 @@ while  viOpcionSele!=7:
     elif viOpcionSele == 2:
         print("Cantidad Lineas:",udfConteoLineas())
     elif viOpcionSele == 3:
-        print("Cantidad Palabras")
+        print("Cantidad Palabras",udfConteoPalabras())
+        #print("Otro Conteo",udfOtroConteoPalabras())
     elif viOpcionSele == 4:
         print("Cantidad Busqueda Letra")
     elif viOpcionSele == 5:

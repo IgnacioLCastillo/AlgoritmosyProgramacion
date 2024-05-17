@@ -1,4 +1,3 @@
-#encoding: utf-8
 # TDA EMPLEADO
 class tdaEMPLEADO:
     def __init__(self, pNombre, pApellido,pSueldo,pEdad=0):
@@ -19,45 +18,16 @@ class tdaEMPLEADO:
         return self.nombre + ' ' + self.apellido
 
     ##Retorno En Funciones
-    def getNombre(self):
+    def ObtenerNombre(self):
         return self.nombre
-    def getApellido(self):
+    def ObtenerApellido(self):
         return self.apellido
 
-    def getSueldoBruto(self):
+    def ObtenerSueldoBruto(self):
         return self.sueldo*.87
 
-    def getSueldoNeto(self):
+    def ObtenerSueldoNeto(self):
         return self.sueldo
-
-    def getMaximoSueldo(self):
-
-def udfBubbleSort(arrlistEmpleados):
-    n = len(arrlistEmpleados)
-    # optimizar el código, por lo que si la matriz ya está ordenada, no es necesario
-    # para pasar por todo el proceso
-    #hayCambios = False #Interruptor
-    # Recorrer todos los elementos del arreglo o lista
-    for pasada in range(n - 1):
-        # range(n) también funciona, pero el bucle externo lo hará
-        # repetir una vez más de lo necesario.
-        # Los últimos elementos i ya están en su lugar
-        EstaOrdenado = True #Interruptor asumiendo que esta ordenado. Es una hipotesis a refutar
-        for j in range(0, n - pasada - 1):
-            # recorrer el arreglo de 0 a n-i-1
-            # Cambiar si el elemento encontrado es mayor
-            # que el siguiente elemento
-            if arrlistEmpleados[j] > arrlistEmpleados[j + 1]:
-                EstaOrdenado = False #Interruptor demostrando que no esta ordenado y debere seguir iterando
-                #arrlistEmpleados[j], arrlistEmpleados[j + 1] = arrlistEmpleados[j + 1], arrlistEmpleados[j]
-                aux = arrlistEmpleados[j]
-                arrlistEmpleados[j] = arrlistEmpleados[j + 1]
-                arrlistEmpleados[j + 1] = aux
-
-        if EstaOrdenado: #Si esta ordenado, salimos del bucle
-            return
-
-
 
 
 def udfCargaEmpleados (plisEmpleados,piCantElem):
@@ -82,19 +52,18 @@ def udfCargaEmpleados (plisEmpleados,piCantElem):
 
 
 def udfObtenerEmpMaximo(plisEmpleados,piCantElem):
-    viMax = plisEmpleados[0].getSueldoBruto()
+    viMax = plisEmpleados[0].ObtenerSueldoBruto()
     posEmp=0
     for i in range(1, piCantElem, 1):  # Iteramos sobre cada elemento modalidad Arreglo.
-        if plisEmpleados[i].getSueldoBruto() > viMax:
-            viMax = plisEmpleados[i].getSueldoBruto()
+        if plisEmpleados[i].ObtenerSueldoBruto() > viMax:
+            viMax = plisEmpleados[i].ObtenerSueldoBruto()
             posEmp=i
 
     return posEmp
 
 
 ##Programa Principal
-lisEmpleados=[0]*3 ##Una de las tantas formas que tiene la lista de inicializar valores predefinidos. Aca solo
-#cargamos 3 empleados x ahora
+lisEmpleados=[0]*2 ##Una de las tantas formas que tiene la lista de inicializar valores predefinidos
 viOpcion = -1
 
 viCantElem=len(lisEmpleados)
@@ -102,16 +71,14 @@ print(lisEmpleados)
 while viOpcion != 8:
     print('\n')
     print('1-Carga Empleado')
-    print('2-Retornar Sueldo Neto (Sueldo x.87)')
+    print('2-Retornar Sueldo Neto (Sueldo x.87')
     print('3-Promedio Sueldo de Empleados')
-    print('4-Mejor Sueldo')
+    print('4-Mejor y Peor Sueldo')
     print('5-Mostrar Todos')
-    print('6-Buscar Empleado por ID Legajo')
-    print('7-Ordenar Empleado x Sueldo')
-    print('8-Elimina Empleado')
-    print('9-Actualiza Datos Empleado')
-    print('10-Salir')
-    viOpcion = int(input("Seleccione:"))
+    print('6-Buscar Empleado')
+    print('7-Ordenar Empleado')
+    print('8-Salir')
+    viOpcion=int(input("Seleccione:"))
 
     if viOpcion==1:
         print("--------------Carga Empleados--------------")
@@ -119,27 +86,22 @@ while viOpcion != 8:
     elif viOpcion == 2:
         for cadaEmpleado in lisEmpleados: #Iteramos directamente sobre la coleccion
             print("--------------Seccion Sueldos Brutos--------------")
-            print(f'Apellido:{cadaEmpleado.getApellido()} Sueldo Bruto:{cadaEmpleado.getSueldoBruto()}')
+            print(f'Apellido:{cadaEmpleado.ObtenerApellido()} Sueldo Bruto:{cadaEmpleado.ObtenerSueldoBruto()}')
     elif viOpcion == 3:
         viSuma = 0
         for cadaEmpleado in lisEmpleados:
             print("--------------Promedio Empleados--------------")
-            viSuma += cadaEmpleado.getSueldoBruto()
+            viSuma += cadaEmpleado.ObtenerSueldoBruto()
 
         print(f"El Promedio de todos los Empleados es:{float(viSuma/viCantElem)}")
     elif viOpcion == 4:
-        print("--------------Empleado que mas Gana--------------")
         viMaxEmp=udfObtenerEmpMaximo(lisEmpleados, viCantElem)
-        print(f'Apellido:{lisEmpleados[viMaxEmp].getApellido()} Sueldo Bruto:{lisEmpleados[viMaxEmp].getSueldoBruto()}')
+        print(f'Apellido:{lisEmpleados[viMaxEmp].ObtenerApellido()} Sueldo Bruto:{lisEmpleados[viMaxEmp].ObtenerSueldoBruto()}')
     elif viOpcion == 5:
         print("--------------Mostrar Todos --------------")
     elif viOpcion == 6:
         print("--------------Buscar Secuencual Empleados--------------")
     elif viOpcion == 7:
         print("--------------Ordenar Empleados--------------")
-    elif viOpcion == 8:
-        print("--------------Eliminar Empleados--------------")
-    elif viOpcion == 9:
-        print("--------------Actualizar Empleados--------------")
     else:
         print('Error')

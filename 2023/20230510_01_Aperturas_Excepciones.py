@@ -1,4 +1,4 @@
-
+'''
 print('-------------Metodo Apertura Capturando exceptions------------------')
 try:
     print("Abierto con Exito")
@@ -12,7 +12,7 @@ except Exception as Otromensaje:
     print("Ocurrio un error al abrir el archivo:", Otromensaje)
 finally:
     print("paso a cerrar si o si")
-
+'''
 
 
 with open("Mitexto.txt", "w") as archivo:
