@@ -59,7 +59,7 @@ def udfConteoPalabras_Forma_02():
                 # el len de la lista saco la cantidad de palabras de las dos o mas filas que con el extend
                 # se unieron en una sola lista.
                 print("Contenido Lista:", listaPalabras) # Solo para que vean como queda la lista extendida
-    return len(listaPalabras)
+        return len(listaPalabras)
 
 def udfConteoPalabras_Forma_03():
     cantidadPalabras = 0
