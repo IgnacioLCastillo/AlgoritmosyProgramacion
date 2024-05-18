@@ -1,57 +1,64 @@
-def insertion_sort(arr, left=0, right=None):
-    if right is None:
-        right = len(arr) - 1
+peliculas = ["El planeta de los simios nuevo reino", "Godzilla y Kong el nuevo imperio", "Deadpool y Wolverine"]
+precios = {"2D": 3500, "3D": 5000}
 
-    for i in range(left + 1, right + 1):
-        key = arr[i]
-        j = i - 1
-        while j >= left and arr[j] > key:
-            arr[j + 1] = arr[j]
-            j -= 1
-        arr[j + 1] = key
+while True:
+    tipo_sala = input("Ingrese el tipo de sala (2D o 3D): ")
+    cantidad_entradas = int(input("Ingrese la cantidad de entradas: "))
 
-def merge(arr, left, mid, right):
-    left_copy = arr[left:mid+1]
-    right_copy = arr[mid+1:right+1]
+    costo_total = precios[tipo_sala] * cantidad_entradas
+    descuento = costo_total * 0.1 if cantidad_entradas >= 3 else 0
+    monto_final = costo_total - descuento
 
-    left_index = right_index = 0
-    k = left
+    print(f"\nCosto total: ${costo_total}")
+    print(f"Descuento aplicado: ${descuento}")
+    print(f"Monto final a pagar: ${monto_final}\n")
 
-    while left_index < len(left_copy) and right_index < len(right_copy):
-        if left_copy[left_index] <= right_copy[right_index]:
-            arr[k] = left_copy[left_index]
-            left_index += 1
-        else:
-            arr[k] = right_copy[right_index]
-            right_index += 1
-        k += 1
+    nueva_compra = input("¿Desea procesar una nueva compra? (s/n): ")
+    if nueva_compra.lower() != "s":
+        break
 
-    while left_index < len(left_copy):
-        arr[k] = left_copy[left_index]
-        left_index += 1
-        k += 1
+peliculas = ["El planeta de los simios nuevo reino", "Godzilla y Kong el nuevo imperio", "Deadpool y Wolverine"]
+precios = {"2D": 3500, "3D": 5000}
+entradas_vendidas = {"2D": 0, "3D": 0}
+continuar_comprando = True
 
-    while right_index < len(right_copy):
-        arr[k] = right_copy[right_index]
-        right_index += 1
-        k += 1
+while continuar_comprando:
+    print("Películas disponibles:")
+    for i, pelicula in enumerate(peliculas, start=1):
+        print(f"{i}. {pelicula}")
 
-def timsort(arr):
-    min_run = 32
-    n = len(arr)
+    pelicula_elegida = int(input("Ingrese el número de la película deseada: "))
+    tipo_sala = input("¿Desea 2D o 3D? ")
+    cantidad_entradas = int(input("Ingrese la cantidad de entradas: "))
 
-    for i in range(0, n, min_run):
-        insertion_sort(arr, i, min((i + min_run - 1), (n - 1)))
+    if tipo_sala in precios:
+        entradas_vendidas[tipo_sala] += cantidad_entradas
+    else:
+        print("Tipo de sala no válido.")
 
-    size = min_run
-    while size < n:
-        for left in range(0, n, 2 * size):
-            mid = left + size - 1
-            right = min((left + 2 * size - 1), (n - 1))
-            merge(arr, left, mid, right)
-        size *= 2
+total_sin_descuento_2D = entradas_vendidas["2D"] * precios["2D"]
+total_sin_descuento_3D = entradas_vendidas["3D"] * precios["3D"]
+total_sin_descuento = total_sin_descuento_2D + total_sin_descuento_3D
 
-# Ejemplo de uso
-arr = [64, 34, 25, 12, 22, 11, 90]
-timsort(arr)
-print("Arreglo ordenado:", arr)
+if entradas_vendidas["2D"] + entradas_vendidas["3D"] >= 3:
+    descuento = total_sin_descuento * 0.1
+else:
+    descuento = 0
+
+total_con_descuento = total_sin_descuento - descuento
+
+print(f"costo total {total_sin_descuento}")
+print(f"Descuento aplicado {descuento}")
+print(f"monto final a pagar {total_con_descuento}")
+
+continuar = input("¿Desea procesar otra compra? (s/n): ")
+if continuar.lower() != "s":
+    continuar_comprando = False
+
+print("\nReporte final:")
+print(f"Entradas vendidas en sala 2D: {entradas_vendidas['2D']}")
+print(f"Entradas vendidas en sala 3D: {entradas_vendidas['3D']}")
+print(f"Total sin descuento: ${total_sin_descuento}")
+print(f"Descuento aplicado: ${descuento}")
+print(f"Monto final a pagar: ${total_con_descuento}")
+
