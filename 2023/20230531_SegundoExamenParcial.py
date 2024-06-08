@@ -7,8 +7,15 @@ class TDAExamen:
         self.notaEstudiante = notaEstudiante
         self.materia = materia
 
-    def ObteneridExamen(self):
+    def getidExamen(self):
         return self.idExamen
+
+    def getApellidoNombreEstudiante(self):
+        return self.nombreEstudiante
+
+    def getNotaEstudiante(self):
+        return self.notaEstudiante
+
 
     def __str__(self):
         return f"{self.idExamen},{self.nombreEstudiante},{self.notaEstudiante},{self.materia}"
@@ -39,7 +46,9 @@ def leer_archivo(nombre_archivo):
 def udf_escribir_archivo(plExamenes, nombre_archivo):
     with open(nombre_archivo, 'w', encoding="utf-8") as archivo:
         for cadaExamen in plExamenes:
-            linea = ';'.join(cadaExamen)
+            #linea = ';'.join(cadaExamen)
+            #linea = f"{cadaExamen.ObteneridExamen()};{cadaExamen.getApellidoNombreEstudiante()};{}"
+            print(cadaExamen)
             archivo.write(str(cadaExamen) + '\n')
 
 
@@ -47,7 +56,7 @@ def udf_escribir_archivo(plExamenes, nombre_archivo):
 def udfBusquedaSecuencial(unaLista, item):
     pos = 0
     while pos < len(unaLista):
-        if unaLista[pos].ObteneridExamen() == item:
+        if unaLista[pos].getidExamen() == item:
             return pos
         else:
             pos = pos+1
@@ -74,6 +83,20 @@ def ordenar_por_nota(examenes):
             if examenes[j].notaEstudiante > examenes[j + 1].notaEstudiante:
                 examenes[j], examenes[j + 1] = examenes[j + 1], examenes[j]
 
+
+def udf_ordenar_Burbuja(plisNota):
+    # Obtiene el número de exámenes
+    n = len(plisNota)
+    # Recorre la lista de exámenes
+    for i in range(n - 1):
+        # En cada pasada, el mayor elemento se mueve al final de la lista
+        for j in range(n - 1 - i):
+            # Compara las notas de los exámenes adyacentes
+            if plisNota[j].notaEstudiante < plisNota[j + 1].notaEstudiante:
+                # Si el examen actual tiene una nota mayor que el siguiente, los intercambia usando una variable auxiliar
+                aux = plisNota[j]
+                plisNota[j] = plisNota[j + 1]
+                plisNota[j + 1] = aux
 
 # Función para realizar una búsqueda binaria de una nota en la lista de Examen
 def buscar_nota(examenes, nota):
@@ -103,9 +126,9 @@ def main():
         print("1) Leer archivo de texto")
         print("2) Modificar")
         print("3) Eliminar")
-        print("4) Buscar")
-        print("5) Opcion 5")
-        print("6) Opcion 6")
+        print("4) Mostrar Ordenado por Nota")
+        print("5) Buscar por ID")
+        print("6) Mostrar Por Materia")
         print("7) Salir")
         opcion = int(input("Ingrese una opción: "))
 
@@ -144,6 +167,10 @@ def main():
                 udfMostrarTodos(listaexamenes)
                 print("Examen Eliminado con Exito")
 
+        if opcion == 4:
+            print("--------------Ordenar por Nota--------------")
+            udf_ordenar_Burbuja(listaexamenes)
+            udfMostrarTodos(listaexamenes)
 
         elif opcion == 7:
             print ("Salir")

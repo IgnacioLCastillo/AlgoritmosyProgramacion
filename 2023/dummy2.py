@@ -1,86 +1,85 @@
-class tdaProducto:
-
-    def __init__(self, cod, stock, precio):
-        self.codigo = cod
-        self.cant_Stock = stock
-        self.precio_Produc = precio
+# -*- coding: utf-8 -*-
+class tdaProductos:
+    def __init__(self, pCodigoProducto, pStock, pPrecio=0):
+        self.codigo = pCodigoProducto
+        self.stock = pStock
+        self.precio = pPrecio
 
     def __str__(self):
-        return self.codigo
+        return str(self.codigo) + ' ' + str(self.stock) + ' ' + str(self.precio)
 
 
-def cargar_vector(vector):
-    contador = 0
-    for i in range(0, cantElement, 1):
-        codigo = input("Ingrese el c�digo del producto: ")
+def udfCargaproducto(lisProductos):
+    for i in range(5):
         while True:
             try:
-                cant_Stock = int(input("Ingrese stock del producto: "))
-                if cant_Stock < 0:
-                    print("Ingrese un numero positivo, por favor")
+                vfCodigo = int(input(f"Ingrese el codigo del producto {i + 1}: "))
+                if vfCodigo < 0:
+                    print("Error, ingrese un número válido.")
                     continue
-            except ValueError:
-                print("Ingrese un numero, por favor")
-                continue
-            else:
                 break
+            except ValueError:
+                print("El código debe ser un número válido.")
+                continue
+
         while True:
             try:
-                precio_Produc = float(input("Ingrese precio del producto: "))
-                if precio_Produc < 0:
-                    print("Ingrese un numero positivo, por favor")
+                pStock = int(input(f"Ingrese la cantidad de producto {i + 1}: "))
+                if pStock < 0:
+                    print("El stock debe ser un número positivo.")
                     continue
+                break
             except ValueError:
-                print("Ingrese un numero, por favor")
+                print("El stock debe ser un número válido.")
                 continue
-            else:
+
+        while True:
+            try:
+                pPrecio = float(input(f"Ingrese el precio del producto {i + 1}: "))
+                if pPrecio < 0:
+                    print("El precio debe ser un número positivo.")
+                    continue
                 break
-        vector.append(tdaProducto(codigo, cant_Stock, precio_Produc))
-        if contador < cantElement:
-            flag = input("Seguir cargando  productos: S/N ")
-            if flag.upper() == "S":
+            except ValueError:
+                print("El precio debe ser un número válido.")
                 continue
+
+        lisProductos.append(tdaProductos(vfCodigo, pStock, pPrecio))
+        print(f'Producto {i + 1} cargado con éxito')
+
+
+def udfObtenerEmpMaximo(lisProductos):
+    max_stock = max(lisProductos, key=lambda x: x.stock)
+    return lisProductos.index(max_stock)
+
+
+def udfMiMain():
+    viTopeLista = 5
+    lisProductos = []*viTopeLista
+    viOpcion = -1
+    while viOpcion != 3:
+        print('\n')
+        print('1 - Opción 1: Cargar productos')
+        print('2 - Opción 2: Obtener producto con mayor stock')
+        print('3 - Salir')
+        viOpcion = int(input("Seleccione una opción: "))
+
+        if viOpcion == 1:
+            udfCargaproducto(lisProductos)
+            print("-------------- Opción 1 --------------")
+        elif viOpcion == 2:
+            if lisProductos:
+                max_index = udfObtenerEmpMaximo(lisProductos)
+                print(f"Producto con mayor stock: {lisProductos[max_index]}")
             else:
-                break
-        contador += 1
-        return contador
-
-    print("Datos cargados correctamente")
-
-
-def precio_promedio(vector):
-    total_precios = sum([producto.precio_Produc for producto in vector])
-    return total_precios / len(vector)
-
-
-def productos_Encima_Del_Promedio(vector):
-    promedio = precio_promedio(vector)
-    print(f"Productos con precio por encima de ${promedio:.2f}:")
-    for producto in vector:
-        if producto.precio_Produc > promedio:
-            print(f"- C�digo: {producto.codigo}, Stock: {producto.cant_stock}, Precio: ${producto.precio_Produc:.2f}")
-
-
-vector = [0] * 5
-cantElement = len(vector)
-
-
-def menu(vector):
-    while True:
-        print("=== Men� ===")
-        print("1) Cargar datos del vector")
-        print("2) Mostrar productos por encima del precio promedio")
-        print("3) Salir")
-        opcion = input("Seleccione una opci�n: ")
-        if opcion == "1":
-            cargar_vector(vector)
-        elif opcion == "2":
-            productos_Encima_Del_Promedio(vector)
-        elif opcion == "3":
+                print("La lista de productos está vacía.")
+            print("-------------- Opción 2 --------------")
+        elif viOpcion == 3:
+            print("Hasta luego.")
+        else:
+            print('Opción no válida.')
             break
 
-        else:
-            print("Opci�n inv�lida")
 
-
-menu(vector)
+# Programa Principal
+udfMiMain()
