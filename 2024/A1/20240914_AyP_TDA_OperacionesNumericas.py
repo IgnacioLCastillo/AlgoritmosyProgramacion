@@ -22,6 +22,5 @@ print(miSetNumerosA)
 print(miSetNumerosA.ObtenerSuma())
 print(tdaOperaciones.ObtenerResta(miSetNumerosB))
 print(miSetNumerosB.ObtenerResta())
-print(miSetNumerosB.ObtenerSuma())
 
 
